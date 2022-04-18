@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -13,7 +14,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Objects;
 import java.util.Vector;
 
 public class PaneSection {
@@ -48,6 +52,7 @@ public class PaneSection {
     private VBox generateControl()
     {
 //        List<String,String> sejour = new List<String,String>();
+        Image image = new Image(HelloApplication.class.getResourceAsStream("/img/icon.jpg"));
         VBox separateur = new VBox();
         separateur.setAlignment(Pos.TOP_CENTER);
         separateur.setPrefHeight(200);
@@ -57,6 +62,7 @@ public class PaneSection {
         titreSection.setAlignment(Pos.TOP_CENTER);
         titreSection.setText(titre);
         titreSection.setTextAlignment(TextAlignment.CENTER);
+        titreSection.getStyleClass().add("section");
 
         HBox section = new HBox();
         section.setAlignment(Pos.TOP_CENTER);
@@ -68,6 +74,7 @@ public class PaneSection {
             Button button = new Button();
             section.setMargin(button,new Insets(0,5,0,0));
             button.setMnemonicParsing(false);
+            button.getStyleClass().add("travel");
 
             ImageView imageView = new ImageView();
             imageView.setId(titre+" "+String.valueOf(i));
@@ -75,6 +82,7 @@ public class PaneSection {
             imageView.setFitWidth(200);
             imageView.setPickOnBounds(true);
             imageView.setPreserveRatio(true);
+            imageView.setImage(image);
 //            imageView.setImage(); // need list of image
 
             button.setGraphic(imageView);
