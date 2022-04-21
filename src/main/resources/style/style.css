@@ -8,6 +8,19 @@
     -fx-background-color: #1d1d1d;
 }
 
+.ligne{
+    -fx-background-color:transparent; /* transparent */
+}
+
+.ligne .scroll-bar:horizontal {
+
+    -fx-opacity: 0;
+}
+
+.recycler .scroll-bar:vertical{
+    -fx-opacity: 0;
+}
+
 .label {
     -fx-font-size: 15pt;
     -fx-font-family: "Segoe UI Semibold";
