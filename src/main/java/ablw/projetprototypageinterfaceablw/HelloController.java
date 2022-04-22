@@ -70,8 +70,6 @@ public class HelloController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.customPanel = new Vector<>();
 
-        //need to get data
-
         for (int i = 0; i < 1000; i++) { //2500
             CustomPanel paneSectionVar = new CustomPanel("test", 10);
             customPanel.add(paneSectionVar);

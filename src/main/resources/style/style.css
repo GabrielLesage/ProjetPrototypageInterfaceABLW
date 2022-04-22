@@ -21,10 +21,36 @@
     -fx-opacity: 0;
 }
 
+.search{
+    -fx-max-width: 1050px;
+    -fx-max-height: 110px;
+    -fx-border-radius: 50%;
+    -fx-background-color: #C0C0C0;
+    -fx-background-radius: 50px;
+    -f-border: orange;
+
+
+}
+.search .text-input{
+    -fx-font-family: Neucha;
+    -fx-text-fill: #2F4F4F;
+    -fx-prompt-text-fill: #2F4F4F;
+    -fx-font-size: 15pt;
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+}
+
+
+.search .label{
+    -fx-font-size: 30pt;
+    -fx-font-family: Neucha;
+    -fx-text-fill: black;
+}
+
 .label {
     -fx-font-size: 15pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: #696969;
+    -fx-text-fill: #DCDCDC;
 
 }
 
@@ -181,11 +207,7 @@
 
 }
 
-.search{
-    -fx-min-width: 100px;
-    -fx-min-height: 80px;
-    -fx-border-radius: 50%;
-}
+
 
 .travel{
     -fx-background-color: transparent;

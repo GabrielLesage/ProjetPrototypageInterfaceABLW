@@ -434,7 +434,7 @@
                                 <Label text="Date de départ" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                 <Button mnemonicParsing="false" styleClass="round-button" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <graphic>
-                              <ImageView fitHeight="85.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="100.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../img/search-icon.png" />
                                  </image>
