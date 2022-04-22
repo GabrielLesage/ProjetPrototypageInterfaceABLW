@@ -1,15 +1,14 @@
 package ablw.projetprototypageinterfaceablw;
 
 import javafx.beans.NamedArg;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -66,11 +65,12 @@ public class HelloController implements Initializable {
     ListView<CustomPanel> myListView;
     Vector<CustomPanel> customPanel;
 
+    @FXML
+    TextField duration;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.customPanel = new Vector<>();
-
-        //need to get data
 
         for (int i = 0; i < 1000; i++) { //2500
             CustomPanel paneSectionVar = new CustomPanel("test", 10);
@@ -83,6 +83,16 @@ public class HelloController implements Initializable {
             @Override
             public ListCell<CustomPanel> call(ListView<CustomPanel> listView) {
                 return new PaneSection();
+            }
+        });
+
+        duration.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    duration.setText(newValue.replaceAll("[^\\d]", ""));
+                }
             }
         });
 
