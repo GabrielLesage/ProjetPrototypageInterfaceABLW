@@ -389,7 +389,7 @@
 
 -->
 
-<ScrollPane fx:id="scroll" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" styleClass="body" stylesheets="@../../style/style.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ablw.projetprototypageinterfaceablw.HelloController">
+<ScrollPane fx:id="scroll" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" styleClass="body" stylesheets="@../../style/style.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ablw.projetprototypageinterfaceablw.HelloController">
     <content>
 <!--        <VBox fx:id="separateur" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">-->
             <AnchorPane fx:id="separateur" minHeight="0.0" minWidth="0.0" prefHeight="1615.0" prefWidth="1905.0">
@@ -442,7 +442,7 @@
                            </graphic></Button>
                                 <DatePicker GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                 <Label text="Durée" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                <TextField promptText="durée du voyage ?" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                <TextField fx:id="duration" promptText="durée du voyage ?" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                 <TextField promptText="ou ?" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                             </children>
                             <StackPane.margin>
