@@ -54,6 +54,9 @@ public class HelloController implements Initializable {
         //appel de la fonction de recherche dans un autre thread s'il y a plus de 2 lettres dans la recherche.
         if(mc.getText().length()<2) {
             resultat = new ArrayList<>(listSej);//Renvoie l'ensemble des séjours en cas de recherche vide.
+            observableList.clear();
+            observableList.addAll(setupRes(resultat));
+            myListView.setItems(observableList);
             return;
         }
         RechercheVoyage search = new RechercheVoyage(listSej, mc.getText());
