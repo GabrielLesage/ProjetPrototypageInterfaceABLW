@@ -3,6 +3,8 @@ package ablw.projetprototypageinterfaceablw;
 import javafx.beans.NamedArg;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,6 +33,7 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -39,6 +42,11 @@ public class HelloController implements Initializable {
     public static ArrayList<Sejour> listSej = new ArrayList<>();
     public static ArrayList<Sejour> resultat;
 
+    public static Sejour actualTravel;
+
+    static ObservableList<CustomPanel> observableList = FXCollections.observableArrayList();
+
+
     @FXML
     private TextField mc;
     @FXML
@@ -46,17 +54,32 @@ public class HelloController implements Initializable {
         //appel de la fonction de recherche dans un autre thread s'il y a plus de 2 lettres dans la recherche.
         if(mc.getText().length()<2) {
             resultat = new ArrayList<>(listSej);//Renvoie l'ensemble des séjours en cas de recherche vide.
+            observableList.clear();
+            observableList.addAll(setupRes(resultat));
+            myListView.setItems(observableList);
             return;
         }
         RechercheVoyage search = new RechercheVoyage(listSej, mc.getText());
         Task<ArrayList<Sejour>> task = search.createTask();
         new Thread(task).run();
         resultat = task.getValue();//Renvoie la liste des séjours.
+        observableList.clear();
+        observableList.addAll(setupRes(resultat));
+        myListView.setItems(observableList);
     }
     //class to contain objet of data for a ligne
     protected static class CustomPanel {
         protected String titre;
         protected int nb_element;
+        protected ArrayList<Sejour> resultat;
+
+        public ArrayList<Sejour> getResultat() {
+            return resultat;
+        }
+
+        public void setResultat(ArrayList<Sejour> resultat) {
+            this.resultat = resultat;
+        }
 
         public String getTitre() {
             return titre;
@@ -74,10 +97,11 @@ public class HelloController implements Initializable {
             this.nb_element = nb_element;
         }
 
-        public CustomPanel(String titre, int nb_element) {
+        public CustomPanel(String titre, int nb_element, ArrayList<Sejour> resultat) {
             super();
             this.titre = titre;
             this.nb_element = nb_element;
+            this.resultat = resultat;
         }
     }
 
@@ -94,7 +118,7 @@ public class HelloController implements Initializable {
 
     @FXML
     ListView<CustomPanel> myListView;
-    Vector<CustomPanel> customPanel;
+    Vector<Sejour> customPanel;
 
     @FXML
     TextField duration;
@@ -177,7 +201,7 @@ public class HelloController implements Initializable {
 
 
 
-        if(this.myListView !=null)this.customPanel = new Vector<>();
+
 
         //Création de la liste de 10 000 voyages.
         for(int i = 0; i < 500; i++){
@@ -204,15 +228,12 @@ public class HelloController implements Initializable {
         }
 
         resultat = new ArrayList<>(listSej);
-
-        //Créer un nombre de panneau en fonction du nombre de séjour dans le résultat de recherche.
-        for (int i = 0; i < resultat.size()/10; i++) { //2500
-            CustomPanel paneSectionVar = new CustomPanel("test "+String.valueOf(i), 10);
-
-            customPanel.add(paneSectionVar);
-        }
-
-            myListView.getItems().addAll(customPanel);
+        if(this.myListView !=null)
+        {
+            //this.myListView = new ListView<Sejour>();
+            this.customPanel = new Vector<>();
+            if(myListView != null)
+                myListView.getItems().addAll(setupRes(resultat));
 
             myListView.setCellFactory(new Callback<ListView<CustomPanel>, ListCell<CustomPanel>>() {
                 @Override
@@ -231,4 +252,24 @@ public class HelloController implements Initializable {
                 }
             });
         }
+        //Créer un nombre de panneau en fonction du nombre de séjour dans le résultat de recherche.
+//        for (int i = 0; i < resultat.size()/10; i++) { //2500
+//            CustomPanel paneSectionVar = new CustomPanel("test "+String.valueOf(i), 10);
+//
+//            customPanel.add(paneSectionVar);
+//        }
+
+
+
+    }
+
+    public Vector<CustomPanel> setupRes(ArrayList<Sejour> res)
+    {
+        Vector<CustomPanel> tmp =new Vector<CustomPanel>();
+
+        for (int i = 0; i < resultat.size()/10; i++) {
+            tmp.add(new CustomPanel("test "+String.valueOf(i), 10,new ArrayList<Sejour>(res.subList(i*10, (i+1)*10))));
+        }
+        return tmp;
+    }
 }
