@@ -115,11 +115,14 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
 
 
         for (int i = 0; i < nb_element; i++) {
-//            Button button = new Button();
-//            section.setMargin(button,new Insets(0,5,0,0));
-//            button.setMnemonicParsing(false);
-//            button.getStyleClass().add("travel");
-            //
+            StackPane stackPane = new StackPane();
+            stackPane.setMinWidth(200);
+            stackPane.setMinHeight(150);
+
+            Label titre = new Label();
+            titre.setText("titre");
+            StackPane.setAlignment(titre, Pos.BOTTOM_CENTER);
+
             ImageView imageView = new ImageView();
             imageView.setId(titre+" "+String.valueOf(i));
             imageView.setFitHeight(150);
