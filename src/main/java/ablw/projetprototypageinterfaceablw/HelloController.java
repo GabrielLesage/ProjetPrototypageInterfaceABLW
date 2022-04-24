@@ -3,6 +3,7 @@ package ablw.projetprototypageinterfaceablw;
 import javafx.beans.NamedArg;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -26,12 +28,31 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
 public class HelloController implements Initializable {
 
+    public static ArrayList<Sejour> listSej = new ArrayList<>();
+    public static ArrayList<Sejour> resultat;
+
+    @FXML
+    private TextField mc;
+    @FXML
+    public void search(){
+        //appel de la fonction de recherche dans un autre thread s'il y a plus de 2 lettres dans la recherche.
+        if(mc.getText().length()<2) {
+            resultat = new ArrayList<>(listSej);//Renvoie l'ensemble des séjours en cas de recherche vide.
+            return;
+        }
+        RechercheVoyage search = new RechercheVoyage(listSej, mc.getText());
+        Task<ArrayList<Sejour>> task = search.createTask();
+        new Thread(task).run();
+        resultat = task.getValue();//Renvoie la liste des séjours.
+    }
     //class to contain objet of data for a ligne
     protected static class CustomPanel {
         protected String titre;
@@ -64,6 +85,9 @@ public class HelloController implements Initializable {
     private Label welcomeText;
 
     @FXML
+    private Button search;
+
+    @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
@@ -84,7 +108,7 @@ public class HelloController implements Initializable {
 
     static protected String connected=null;
 
-    public void connection(ActionEvent event) throws IOException {
+    public void connection(ActionEvent event) throws IOException, Exception {
         if(this.connected == null)
         {
             Stage modal = new Stage();
@@ -129,7 +153,7 @@ public class HelloController implements Initializable {
         stage.close();
     }
 
-    public void toMain(ActionEvent event) throws IOException {
+    public void toMain(ActionEvent event) throws Exception {
         root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -153,14 +177,40 @@ public class HelloController implements Initializable {
 
 
 
-        if(this.myListView !=null)
-        {
-            this.customPanel = new Vector<>();
+        if(this.myListView !=null)this.customPanel = new Vector<>();
 
-            for (int i = 0; i < 1000; i++) { //2500
-                CustomPanel paneSectionVar = new CustomPanel("test", 10);
-                customPanel.add(paneSectionVar);
-            }
+        //Création de la liste de 10 000 voyages.
+        for(int i = 0; i < 500; i++){
+            listSej.add(new Sejour("Cavaillon", "Gabriel", "Une jolie maison en périphérie", "Ménage, travaux intérieurs"));
+            listSej.add(new Sejour("Orange", "Denis", "Maison avec piscine et jardin", "Entretien jardin, travaux intérieurs"));
+            listSej.add(new Sejour("Mondragon", "Jacob", "Maison au bord d'un étang", "Entretien jardin, travaux extérieurs"));
+            listSej.add(new Sejour("Cheval Blanc", "Alexis", "Une jolie maison", "Potager, récolte de fruits"));
+            listSej.add(new Sejour("Montfavet", "Eddy", "Appartement dans le centre", "Couper du bois"));
+            listSej.add(new Sejour("Molégès", "Sylvain", "Une jolie maison en périphérie", "Jardinage"));
+            listSej.add(new Sejour("Apt", "Jérémie", "Apartement avec jacuzzi", "Conception 3D"));
+            listSej.add(new Sejour("Les taillades", "Damien", "Appartement", "Travaux intérieurs"));
+            listSej.add(new Sejour("Avignon", "Nathanaël", "Maison", "Travaux extérieurs"));
+            listSej.add(new Sejour("Lyon", "Jean", "Maison", "Soudures"));
+            listSej.add(new Sejour("Paris", "Marc", "Appartement", "Electronique"));
+            listSej.add(new Sejour("Strasbourg", "Jean-Marc", "Maison", "Assistance informatique"));
+            listSej.add(new Sejour("Saint Etienne", "Arthur", "Maison", "Jardinage"));
+            listSej.add(new Sejour("Brest", "Alexandre", "Appartement", "Garde d'enfant"));
+            listSej.add(new Sejour("Rouen", "Jacque", "Appartement", "Traveaux extérieurs"));
+            listSej.add(new Sejour("Montpellier", "Charle", "Villa au bord de la mer", "Entretien jardin et piscine"));
+            listSej.add(new Sejour("Saint Saturnin", "Gabriel", "Maison", "Jardinage"));
+            listSej.add(new Sejour("Chateauneuf", "Justin", "Appartement", "Traveaux intérieurs, Ménage"));
+            listSej.add(new Sejour("Jagonzac", "Lucile", "Maison dans un petit hameau", "Aide personne agée"));
+            listSej.add(new Sejour("Le puy en Velay", "Grégory", "Maison", "Entretien jardin"));
+        }
+
+        resultat = new ArrayList<>(listSej);
+
+        //Créer un nombre de panneau en fonction du nombre de séjour dans le résultat de recherche.
+        for (int i = 0; i < resultat.size()/10; i++) { //2500
+            CustomPanel paneSectionVar = new CustomPanel("test "+String.valueOf(i), 10);
+
+            customPanel.add(paneSectionVar);
+        }
 
             myListView.getItems().addAll(customPanel);
 
@@ -181,7 +231,4 @@ public class HelloController implements Initializable {
                 }
             });
         }
-
-
-    }
 }

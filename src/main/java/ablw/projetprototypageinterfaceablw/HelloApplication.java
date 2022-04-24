@@ -17,8 +17,9 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.Map;
 
-public class HelloApplication extends Application {
 
+
+public class HelloApplication extends Application {
 
 
     @Override
@@ -48,6 +49,9 @@ public class HelloApplication extends Application {
 
         stage.setScene(scene);
         stage.show();
+        //test();
+        System.out.println(stage.getMaxWidth());
+        System.out.println(stage.getMaxHeight());
     }
 
     /*public void test() throws Exception {

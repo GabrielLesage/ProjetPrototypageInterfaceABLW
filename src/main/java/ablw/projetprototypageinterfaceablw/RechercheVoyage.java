@@ -27,6 +27,7 @@ public class RechercheVoyage extends Service<ArrayList<Sejour>> {
         return recherche;
     }
 
+    //Implémentation du multithreading javaFX
     protected Task<ArrayList<Sejour>> createTask(){
         return new Task<ArrayList<Sejour>>() {
             @Override
@@ -37,7 +38,7 @@ public class RechercheVoyage extends Service<ArrayList<Sejour>> {
             }
         };
     }
-
+    //Fonction de recherche principale
     private ArrayList<Sejour> rechercheSejour(ArrayList<Sejour> listeSejour, String recherche){
         if(recherche.length() < 2) {
             return null;
