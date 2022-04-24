@@ -50,8 +50,6 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
         //test();
-        System.out.println(stage.getMaxWidth());
-        System.out.println(stage.getMaxHeight());
     }
 
     /*public void test() throws Exception {
