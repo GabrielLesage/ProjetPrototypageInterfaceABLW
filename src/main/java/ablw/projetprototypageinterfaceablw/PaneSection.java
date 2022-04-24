@@ -129,8 +129,12 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
             imageView.setFitWidth(200);
             imageView.setPickOnBounds(true);
             imageView.setPreserveRatio(true);
+
             imageView.setImage(image);
             imageView.getStyleClass().add("travel");
+            stackPane.getChildren().add(imageView);
+            stackPane.getChildren().add(titre);
+
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent me) {
@@ -152,11 +156,11 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
                 }
             });
 
-            section.setMargin(imageView,new Insets(0,5,0,5));
+            section.setMargin(stackPane,new Insets(0,5,0,5));
 //            imageView.setImage(); // need list of image
 
             //button.setGraphic(imageView);
-            section.getChildren().add(imageView);
+            section.getChildren().add(stackPane);
 
         }
 
