@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane fx:id="scroll" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="body" stylesheets="@../../style/style.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ablw.projetprototypageinterfaceablw.HelloController">
+    <content>
+        <!--        <VBox fx:id="separateur" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">-->
+        <AnchorPane fx:id="separateur" minHeight="0.0" minWidth="0.0" prefHeight="1615.0" prefWidth="1905.0">
+            <children>
+                <StackPane alignment="TOP_LEFT">
+                    <children>
+                        <ImageView fx:id="fond" fitHeight="600.0" fitWidth="1905.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
+                            <image>
+                                <Image url="@../../img/fond.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="welcomeText" alignment="TOP_LEFT" onMouseClicked="#toMain" styleClass="h1" text="adeona" textAlignment="CENTER" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+                            <StackPane.margin>
+                                <Insets left="30.0" top="30.0" />
+                            </StackPane.margin>
+                            <opaqueInsets>
+                                <Insets left="30.0" top="30.0" />
+                            </opaqueInsets>
+                        </Label>
+                        <Label fx:id="presentation" styleClass="desciption" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a aliquet elit, non vulputate erat. Curabitur ultrices neque eros, vitae efficitur purus viverra in. In vel sollicitudin turpis. In dictum lobortis felis vel molestie. Maecenas quis tincidunt felis. Nulla at risus orci. Donec et suscipit arcu. Fusce non commodo orci, sit amet interdum diam." textAlignment="CENTER" textFill="WHITE" wrapText="true" StackPane.alignment="TOP_CENTER">
+                            <padding>
+                                <Insets left="120.0" right="120.0" />
+                            </padding>
+                     <StackPane.margin>
+                        <Insets top="200.0" />
+                     </StackPane.margin>
+                        </Label>
+                        <Button fx:id="connection" mnemonicParsing="false" styleClass="round-button" text="Se connecter" StackPane.alignment="TOP_RIGHT">
+                            <StackPane.margin>
+                                <Insets right="30.0" top="30.0" />
+                            </StackPane.margin></Button>
+                  <Label styleClass="h1" text="nom voyage" StackPane.alignment="TOP_CENTER">
+                     <StackPane.margin>
+                        <Insets top="325.0" />
+                     </StackPane.margin>
+                  </Label>
+                        <GridPane alignment="TOP_RIGHT" prefHeight="582.0" prefWidth="1187.0" styleClass="travel-retail" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="600.0" StackPane.alignment="CENTER">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="100.0" prefHeight="300.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Button alignment="CENTER" mnemonicParsing="false" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                           <styleClass>
+                              <String fx:value="round-button" />
+                              <String fx:value="green-button" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="96.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/ok.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                                <Button alignment="CENTER" mnemonicParsing="false" onAction="#toMain" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                           <styleClass>
+                              <String fx:value="round-button" />
+                              <String fx:value="red-button" />
+                           </styleClass>
+                           <graphic>
+                              <ImageView fitHeight="96.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/cross.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                                <Label alignment="CENTER" text="Votre destination" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                <Label alignment="CENTER" text="Date d'accueil" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                <Label text="destination" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                <DatePicker GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                <DatePicker promptText="s" showWeekNumbers="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                           <image>
+                              <Image url="@../../img/icon.jpg" />
+                           </image></ImageView>
+                                <Label prefHeight="313.0" prefWidth="530.0" text="Morbi at ex suscipit, porta sapien quis, sollicitudin ex. Nunc nec felis eu eros faucibus blandit at in magna. Etiam eu convallis lectus. Quisque quis lacus semper, tempus nisl id, posuere orci. Fusce porta interdum elit, in tincidunt tortor faucibus non. Donec elit velit, dictum non quam eget, commodo consectetur mi. Nam tempor nunc quis urna rhoncus imperdiet." textAlignment="CENTER" wrapText="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" text="envoyer un message" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                            </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <StackPane.margin>
+                        <Insets left="200.0" right="200.0" top="400.0" />
+                     </StackPane.margin>
+                        </GridPane>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    
+                </StackPane>
+<!--                <Pane minHeight="-Infinity" prefHeight="980.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="600.0">-->
+<!--                    <children>-->
+<!--                        <ListView fx:id="myListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="1905.0" styleClass="recycler" />-->
+<!--                    </children>-->
+<!--                </Pane>-->
+
+            </children>
+        </AnchorPane>
+    </content>
+</ScrollPane>

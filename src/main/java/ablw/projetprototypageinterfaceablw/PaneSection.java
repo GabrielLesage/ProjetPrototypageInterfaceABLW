@@ -3,8 +3,12 @@ package ablw.projetprototypageinterfaceablw;
 import javafx.beans.NamedArg;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -15,8 +19,10 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
@@ -125,7 +131,21 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent me) {
-                    System.out.println("eee"+imageView.getId());
+                    if(HelloController.connected == "traveler")
+                    {
+                        System.out.println("eee"+imageView.getId());
+                        Parent root = null;
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("travel.fxml"));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        HelloController.stage = (Stage)((Node)me.getSource()).getScene().getWindow();
+                        HelloController.scene = new Scene(root);
+                        HelloController.stage.setScene(HelloController.scene);
+                        HelloController.stage.setMaximized(true);
+                        HelloController.stage.show();
+                    }
                 }
             });
 

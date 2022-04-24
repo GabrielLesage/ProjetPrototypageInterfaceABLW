@@ -27,6 +27,9 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
 
+        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("travel.fxml"));
+        //Scene scene = new Scene(fxmlLoader.load());
+
         Map<String, Object> namespace = fxmlLoader.getNamespace();
         System.out.println(namespace.get("list_section"));
 
@@ -37,11 +40,14 @@ public class HelloApplication extends Application {
 
 
 
+
+
         // System.out.println("er");
         stage.setMaximized(true);
+
+
         stage.setScene(scene);
         stage.show();
-        //test();
     }
 
     /*public void test() throws Exception {
