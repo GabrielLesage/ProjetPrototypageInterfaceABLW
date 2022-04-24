@@ -430,7 +430,7 @@
                                 <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label text="Mot-clé" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                <Label text="Mot-clé" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
                                 <Label text="Date de départ" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                 <Button id="search" mnemonicParsing="false" styleClass="round-button" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <graphic>
