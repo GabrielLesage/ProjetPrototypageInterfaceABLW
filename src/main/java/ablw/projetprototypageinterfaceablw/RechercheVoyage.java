@@ -3,23 +3,23 @@ package ablw.projetprototypageinterfaceablw;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
-import java.util.List;
+import java.util.*;
 
-public class RechercheVoyage extends Service<Sejour[]> {
+public class RechercheVoyage extends Service<ArrayList<Sejour>> {
 
-    Sejour[] listeSejour;
+    ArrayList<Sejour> listeSejour;
     String recherche;
 
-    public RechercheVoyage(Sejour[] listeSejour, String recherche) {
+    public RechercheVoyage(ArrayList<Sejour> listeSejour, String recherche) {
         this.listeSejour = listeSejour;
         this.recherche = recherche;
     }
 
-    public void setListeSejour(Sejour[] listeSejour) {
+    public void setListeSejour(ArrayList<Sejour> listeSejour) {
         this.listeSejour = listeSejour;
     }
 
-    public Sejour[] getListeSejour() {
+    public ArrayList<Sejour> getListeSejour() {
         return listeSejour;
     }
 
@@ -27,30 +27,29 @@ public class RechercheVoyage extends Service<Sejour[]> {
         return recherche;
     }
 
-    protected Task<Sejour[]> createTask(){
-        return new Task<Sejour[]>() {
+    protected Task<ArrayList<Sejour>> createTask(){
+        return new Task<ArrayList<Sejour>>() {
             @Override
-            protected Sejour[] call() throws Exception {
-                return rechercheSejour(getListeSejour(), getRecherche());
+            protected ArrayList<Sejour> call() throws Exception {
+                ArrayList<Sejour> res = rechercheSejour(getListeSejour(), getRecherche());
+                updateValue(res);
+                return res;
             }
         };
     }
 
-    public  Sejour[]rechercher(Sejour[] listeSejour, String recherche){
-
-    }
-
-    private Sejour[] rechercheSejour(Sejour[] listeSejour, String recherche){
+    private ArrayList<Sejour> rechercheSejour(ArrayList<Sejour> listeSejour, String recherche){
         if(recherche.length() < 2) {
             return null;
         }
-        List<Sejour> resultat;
+        ArrayList<Sejour> resultat = new ArrayList<Sejour>();
         for(Sejour sej:listeSejour) {
             if (sej.titre.contains(recherche)) resultat.add(sej);
             else if (sej.hote.contains(recherche)) resultat.add(sej);
             else if (sej.description.contains(recherche)) resultat.add(sej);
             else if (sej.tache.contains(recherche)) resultat.add(sej);
         }
-        return (Sejour[]) resultat.toArray();
+        return resultat;
     }
+
 }
