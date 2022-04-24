@@ -24,14 +24,16 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Vector;
 
 public class PaneSection extends ListCell<HelloController.CustomPanel>  {
 
-    private String titre;
-    private int nb_element;
+    public String titre;
+    public int nbEllement;
+    public ArrayList<Sejour> resultat;
 
     public String getTitre() {
         return titre;
@@ -41,21 +43,35 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
         this.titre = titre;
     }
 
-    public int getNb_element() {
-        return nb_element;
+    public int getNbEllement() {
+        return nbEllement;
     }
 
-    public void setNb_element(int nb_element) {
-        this.nb_element = nb_element;
+    public void setNbEllement(int nbEllement) {
+        this.nbEllement = nbEllement;
+    }
+
+    public ArrayList<Sejour> getResultat() {
+        return resultat;
+    }
+
+    public void setResultat(ArrayList<Sejour> resultat) {
+        this.resultat = resultat;
     }
 
     public PaneSection(){}
 
-    public PaneSection(@NamedArg("titre") String titre, @NamedArg("nb_element") int nb_element)
-    {
-        this.titre=titre;
-        this.nb_element=nb_element;
+    public PaneSection(String titre, int nbEllement, ArrayList<Sejour> resultat) {
+        this.titre = titre;
+        this.nbEllement = nbEllement;
+        this.resultat = resultat;
     }
+
+    //    public PaneSection(@NamedArg("titre") String titre, @NamedArg("nb_element") int nb_element)
+//    {
+//        this.titre=titre;
+//        this.nb_element=nb_element;
+//    }
 
     @Override
     protected void updateItem(HelloController.CustomPanel item, boolean empty) {
@@ -64,13 +80,19 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
             //titre.setText(item.getName());
             //price.setText(String.format("%d $", item.getPrice()));
             //setGraphic(content);
-            this.titre =item.titre;
-            this.nb_element = item.nb_element;
+            nbEllement++;
+            this.titre=item.titre;
+            this.nbEllement=item.nb_element;
+            this.resultat=item.resultat;
+            System.out.println("nb "+nbEllement);
 
 
             setGraphic(generateControl());
 
         } else {
+            this.titre=null;
+            this.nbEllement=0;
+            this.resultat=null;
             setGraphic(null);
         }
     }
@@ -91,7 +113,7 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
 
         Label titreSection =  new Label();
         titreSection.setAlignment(Pos.TOP_CENTER);
-        titreSection.setText(titre);
+        titreSection.setText("test");
         titreSection.setTextAlignment(TextAlignment.CENTER);
         titreSection.getStyleClass().add("section");
 
@@ -113,18 +135,17 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
         separateur.setMargin(scrollPane, new Insets(0,30,0,30));
 
 
-
-        for (int i = 0; i < nb_element; i++) {
+        for (Sejour sejour: resultat) {
             StackPane stackPane = new StackPane();
             stackPane.setMinWidth(200);
             stackPane.setMinHeight(150);
 
             Label titre = new Label();
-            titre.setText("titre");
+            titre.setText(sejour.titre);
             StackPane.setAlignment(titre, Pos.BOTTOM_CENTER);
 
             ImageView imageView = new ImageView();
-            imageView.setId(titre+" "+String.valueOf(i));
+            imageView.setId(titre+" "+String.valueOf(5));
             imageView.setFitHeight(150);
             imageView.setFitWidth(200);
             imageView.setPickOnBounds(true);
