@@ -71,7 +71,7 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
 
     public void onClickButton()
     {
-        System.out.println("xork");
+        System.out.println("work");
     }
 
     private VBox generateControl()
