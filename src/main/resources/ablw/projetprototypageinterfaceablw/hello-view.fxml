@@ -389,19 +389,19 @@
 
 -->
 
-<ScrollPane fx:id="scroll" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" styleClass="body" stylesheets="@../../style/style.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ablw.projetprototypageinterfaceablw.HelloController">
+<ScrollPane fx:id="scroll" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="body" stylesheets="@../../style/style.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ablw.projetprototypageinterfaceablw.HelloController">
     <content>
 <!--        <VBox fx:id="separateur" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">-->
             <AnchorPane fx:id="separateur" minHeight="0.0" minWidth="0.0" prefHeight="1615.0" prefWidth="1905.0">
             <children>
                 <StackPane alignment="TOP_LEFT" prefHeight="176.0" prefWidth="688.0">
                     <children>
-                        <ImageView fx:id="fond" fitHeight="176.0" fitWidth="800.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
+                        <ImageView fx:id="fond" fitHeight="600.0" fitWidth="1905.0" pickOnBounds="true" StackPane.alignment="TOP_CENTER">
                             <image>
                                 <Image url="@../../img/fond.jpg" />
                             </image>
                         </ImageView>
-                        <Label fx:id="welcomeText" alignment="TOP_LEFT" styleClass="h1" text="adeona" textAlignment="CENTER" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+                        <Label fx:id="welcomeText" alignment="TOP_LEFT" onMouseClicked="#toMain" styleClass="h1" text="adeona" textAlignment="CENTER" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                             <StackPane.margin>
                                 <Insets left="30.0" top="30.0" />
                             </StackPane.margin>
@@ -414,7 +414,7 @@
                                 <Insets left="120.0" right="120.0" />
                             </padding>
                         </Label>
-                          <Button fx:id="profil" mnemonicParsing="false" styleClass="round-button" text="Se connecter" StackPane.alignment="TOP_RIGHT">
+                          <Button fx:id="connection" mnemonicParsing="false" onAction="#connection" styleClass="round-button" text="Se connecter" StackPane.alignment="TOP_RIGHT">
                      <StackPane.margin>
                         <Insets right="30.0" top="30.0" />
                      </StackPane.margin></Button>

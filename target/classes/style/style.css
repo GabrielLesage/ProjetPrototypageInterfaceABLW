@@ -48,9 +48,9 @@
 }
 
 .label {
-    -fx-font-size: 15pt;
-    -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: #DCDCDC;
+    -fx-font-size: 20pt;
+    -fx-font-family: Neucha;
+    -fx-text-fill: black;/*#2F4F4F*/
 
 }
 
@@ -142,6 +142,19 @@
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
 
+.button{
+    -fx-border-color: #333;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-radius: 25px 25px 55px 5px/5px 55px 25px 25px;
+
+    -fx-font-family: Neucha;
+    -fx-background-radius: 25px 25px 55px 5px/5px 55px 25px 25px;
+    -fx-background-color: #333;
+    -fx-font-size: 16pt;
+    -fx-text-fill: #fff;
+}
+
 .round-button {
     -fx-min-width: 100px;
     -fx-min-height: 100px;
@@ -153,6 +166,13 @@
     -fx-font-size: 11pt;
     -fx-text-fill: #d8d8d8;
 
+}
+.red-button{
+    -fx-background-color: rgb(187, 45, 59);
+}
+
+.green-button{
+    -fx-background-color: rgb(40, 167, 69);
 }
 /*
 .button:hover {
@@ -207,7 +227,19 @@
 
 }
 
+.travel-retail{
+    -fx-border-color: #333;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-border-radius: 25px 25px 55px 5px/5px 55px 25px 25px;
 
+    -fx-background-color: rgb(192,192,192,0.75);
+    -fx-background-radius: 25px 25px 55px 5px/5px 55px 25px 25px;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+
+
+}
 
 .travel{
     -fx-background-color: transparent;
