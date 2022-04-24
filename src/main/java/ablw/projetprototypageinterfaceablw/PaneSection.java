@@ -115,19 +115,26 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
 
 
         for (int i = 0; i < nb_element; i++) {
-//            Button button = new Button();
-//            section.setMargin(button,new Insets(0,5,0,0));
-//            button.setMnemonicParsing(false);
-//            button.getStyleClass().add("travel");
-            //
+            StackPane stackPane = new StackPane();
+            stackPane.setMinWidth(200);
+            stackPane.setMinHeight(150);
+
+            Label titre = new Label();
+            titre.setText("titre");
+            StackPane.setAlignment(titre, Pos.BOTTOM_CENTER);
+
             ImageView imageView = new ImageView();
             imageView.setId(titre+" "+String.valueOf(i));
             imageView.setFitHeight(150);
             imageView.setFitWidth(200);
             imageView.setPickOnBounds(true);
             imageView.setPreserveRatio(true);
+
             imageView.setImage(image);
             imageView.getStyleClass().add("travel");
+            stackPane.getChildren().add(imageView);
+            stackPane.getChildren().add(titre);
+
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent me) {
@@ -149,11 +156,11 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
                 }
             });
 
-            section.setMargin(imageView,new Insets(0,5,0,5));
+            section.setMargin(stackPane,new Insets(0,5,0,5));
 //            imageView.setImage(); // need list of image
 
             //button.setGraphic(imageView);
-            section.getChildren().add(imageView);
+            section.getChildren().add(stackPane);
 
         }
 
