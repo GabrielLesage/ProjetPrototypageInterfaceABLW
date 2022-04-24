@@ -430,7 +430,7 @@
                                 <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label text="Mot-clé" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Label text="Mot-clé" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                 <Label text="Date de départ" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                 <Button id="search" mnemonicParsing="false" styleClass="round-button" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <graphic>
@@ -443,7 +443,7 @@
                                 <DatePicker GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                 <Label text="Durée" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                 <TextField fx:id="duration" promptText="durée du voyage ?" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                <TextField id="motCle" promptText="ou ?" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" onKeyTyped="#search"/>
+                                <TextField fx:id="mc" onKeyTyped="#search" promptText="où/qui/quoi ?" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                             </children>
                             <StackPane.margin>
                                 <Insets bottom="60.0" left="60.0" right="60.0" />

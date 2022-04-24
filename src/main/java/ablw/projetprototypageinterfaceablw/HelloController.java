@@ -32,9 +32,14 @@ public class HelloController implements Initializable {
     public static ArrayList<Sejour> resultat;
 
     @FXML
-    TextField motCle;
+    private TextField mc;
+    @FXML
     public void search(){
-        RechercheVoyage search = new RechercheVoyage(listSej, motCle.getText());
+        if(mc.getText().length()<2) {
+            resultat = new ArrayList<>(listSej);
+            return;
+        }
+        RechercheVoyage search = new RechercheVoyage(listSej, mc.getText());
         Task<ArrayList<Sejour>> task = search.createTask();
         new Thread(task).run();
         resultat = task.getValue();
