@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ProjetPrototypageInterfaceABLW" target="17" />
+      <module name="ProjetPrototypageInterfaceABLW" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
