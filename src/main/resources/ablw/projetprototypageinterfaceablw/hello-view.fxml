@@ -401,7 +401,7 @@
                                 <Image url="@../../img/fond.jpg" />
                             </image>
                         </ImageView>
-                        <Label fx:id="welcomeText" alignment="TOP_LEFT"  styleClass="h1" text="adeona" textAlignment="CENTER" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+                        <Label fx:id="welcomeText" alignment="TOP_LEFT" styleClass="h1" text="adeona" textAlignment="CENTER" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                             <StackPane.margin>
                                 <Insets left="30.0" top="30.0" />
                             </StackPane.margin>
@@ -420,7 +420,7 @@
                      </StackPane.margin>    </Button>
                         <Button fx:id="afficheProfileBtn" mnemonicParsing="false" onAction="#afficherProfile" styleClass="round-button" text="Afficher Profile" StackPane.alignment="TOP_RIGHT">
                             <StackPane.margin>
-                                <Insets right="150.0" top="30.0" />
+                                <Insets right="160.0" top="30.0" />
                             </StackPane.margin>
                         </Button>
                         <GridPane alignment="CENTER" hgap="30.0" prefHeight="200.0" prefWidth="200.0" styleClass="search" vgap="10.0" StackPane.alignment="BOTTOM_CENTER">
@@ -435,7 +435,7 @@
                                 <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label text="Mot-clé" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+                                <Label text="Mot-clé" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                 <Label text="Date de départ" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                 <Button id="search" mnemonicParsing="false" styleClass="round-button" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <graphic>
@@ -457,6 +457,11 @@
                         <Insets />
                      </opaqueInsets>
                         </GridPane>
+                  <Button fx:id="MesVoyages" layoutX="1645.0" layoutY="40.0" mnemonicParsing="false" onAction="#mesVoyages" styleClass="round-button" text="Mes voyages" StackPane.alignment="TOP_RIGHT">
+                     <StackPane.margin>
+                        <Insets right="300.0" top="30.0" />
+                     </StackPane.margin>
+                  </Button>
                     </children>
                     <opaqueInsets>
                         <Insets />
