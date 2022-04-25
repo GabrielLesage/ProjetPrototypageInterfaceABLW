@@ -6,7 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<ScrollPane fx:id="scroll" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="body" stylesheets="@../../style/style.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ablw.projetprototypageinterfaceablw.HelloController">
+<ScrollPane fx:id="scroll" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="body" stylesheets="@../../style/style.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ablw.projetprototypageinterfaceablw.TravelControler">
     <content>
         <!--        <VBox fx:id="separateur" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">-->
         <AnchorPane fx:id="separateur" minHeight="0.0" minWidth="0.0" prefHeight="1615.0" prefWidth="1905.0">
@@ -84,14 +84,14 @@
                            </graphic></Button>
                                 <Label alignment="CENTER" text="Votre destination" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                 <Label alignment="CENTER" text="Date d'accueil" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                <Label text="destination" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                <DatePicker GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                                <DatePicker promptText="s" showWeekNumbers="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                <Label fx:id="destination" text="destination" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                <DatePicker fx:id="dateBegin" editable="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                <DatePicker fx:id="dateEnd" editable="false" showWeekNumbers="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                 <ImageView fitHeight="300.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <image>
                               <Image url="@../../img/icon.jpg" />
                            </image></ImageView>
-                                <Label prefHeight="313.0" prefWidth="530.0" text="Morbi at ex suscipit, porta sapien quis, sollicitudin ex. Nunc nec felis eu eros faucibus blandit at in magna. Etiam eu convallis lectus. Quisque quis lacus semper, tempus nisl id, posuere orci. Fusce porta interdum elit, in tincidunt tortor faucibus non. Donec elit velit, dictum non quam eget, commodo consectetur mi. Nam tempor nunc quis urna rhoncus imperdiet." textAlignment="CENTER" wrapText="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                <Label fx:id="desciption" prefHeight="313.0" prefWidth="530.0" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <Button mnemonicParsing="false" text="envoyer un message" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                             </children>
                      <opaqueInsets>
