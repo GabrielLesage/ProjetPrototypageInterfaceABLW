@@ -50,6 +50,8 @@ public class HelloController implements Initializable {
     @FXML
     private TextField mc;
     @FXML
+    private Button afficheProfileBtn;
+    @FXML
     public void search(){
         //appel de la fonction de recherche dans un autre thread s'il y a plus de 2 lettres dans la recherche.
         if(mc.getText().length()<2) {
@@ -125,12 +127,19 @@ public class HelloController implements Initializable {
 
     @FXML
     Button connection;
-
     static protected Stage stage;
     static protected Scene scene;
     static protected Parent root;
 
     static protected String connected=null;
+
+    public void afficherProfile(ActionEvent e) throws IOException,Exception{
+        Profile profile = new Profile();
+        Stage stageProfile = new Stage();
+        Stage stageModifier = new Stage();
+        stageProfile = profile.creerStageProfile();
+        stageProfile.show();
+    }
 
     public void connection(ActionEvent event) throws IOException, Exception {
         if(this.connected == null)
@@ -148,6 +157,7 @@ public class HelloController implements Initializable {
             //modal.initOwner(stage);
             connection.setText("Se déconnecter");
             modal.show();
+            afficheProfileBtn.setVisible(true);
         }
         else {
             this.connected=null;
@@ -193,6 +203,17 @@ public class HelloController implements Initializable {
         {
             connection.setText("Se déconnecter");
         }
+        try {
+            if(connected != null){
+                afficheProfileBtn.setVisible(true);
+            }
+            else{
+                afficheProfileBtn.setVisible(false);
+            }
+        }
+        catch (Exception e){
+        }
+
 //        connection.setOnAction(new EventHandler<ActionEvent>() {
 //            @Override public void handle(ActionEvent e) {
 //                connectionTraveler();
