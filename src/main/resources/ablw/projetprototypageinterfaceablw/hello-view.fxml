@@ -417,7 +417,12 @@
                           <Button fx:id="connection" mnemonicParsing="false" onAction="#connection" styleClass="round-button" text="Se connecter" StackPane.alignment="TOP_RIGHT">
                      <StackPane.margin>
                         <Insets right="30.0" top="30.0" />
-                     </StackPane.margin></Button>
+                     </StackPane.margin>    </Button>
+                        <Button fx:id="afficheProfileBtn" mnemonicParsing="false" onAction="#afficherProfile" styleClass="round-button" text="Afficher Profile" StackPane.alignment="TOP_RIGHT">
+                            <StackPane.margin>
+                                <Insets right="150.0" top="30.0" />
+                            </StackPane.margin>
+                        </Button>
                         <GridPane alignment="CENTER" hgap="30.0" prefHeight="200.0" prefWidth="200.0" styleClass="search" vgap="10.0" StackPane.alignment="BOTTOM_CENTER">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="250.0" prefWidth="85.0" />

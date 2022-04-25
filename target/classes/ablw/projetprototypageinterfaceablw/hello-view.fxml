@@ -391,8 +391,8 @@
 
 <ScrollPane fx:id="scroll" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="body" stylesheets="@../../style/style.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ablw.projetprototypageinterfaceablw.HelloController">
     <content>
-        <!--        <VBox fx:id="separateur" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">-->
-        <AnchorPane fx:id="separateur" minHeight="0.0" minWidth="0.0" prefHeight="1615.0" prefWidth="1905.0">
+<!--        <VBox fx:id="separateur" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">-->
+            <AnchorPane fx:id="separateur" minHeight="0.0" minWidth="0.0" prefHeight="1615.0" prefWidth="1905.0">
             <children>
                 <StackPane alignment="TOP_LEFT" prefHeight="176.0" prefWidth="688.0">
                     <children>
@@ -414,10 +414,15 @@
                                 <Insets left="120.0" right="120.0" />
                             </padding>
                         </Label>
-                        <Button fx:id="connection" mnemonicParsing="false" onAction="#connection" styleClass="round-button" text="Se connecter" StackPane.alignment="TOP_RIGHT">
+                          <Button fx:id="connection" mnemonicParsing="false" onAction="#connection" styleClass="round-button" text="Se connecter" StackPane.alignment="TOP_RIGHT">
+                     <StackPane.margin>
+                        <Insets right="30.0" top="30.0" />
+                     </StackPane.margin>    </Button>
+                        <Button fx:id="afficheProfileBtn" mnemonicParsing="false" onAction="#afficherProfile" styleClass="round-button" text="Afficher Profile" StackPane.alignment="TOP_RIGHT">
                             <StackPane.margin>
-                                <Insets right="30.0" top="30.0" />
-                            </StackPane.margin></Button>
+                                <Insets right="150.0" top="30.0" />
+                            </StackPane.margin>
+                        </Button>
                         <GridPane alignment="CENTER" hgap="30.0" prefHeight="200.0" prefWidth="200.0" styleClass="search" vgap="10.0" StackPane.alignment="BOTTOM_CENTER">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="320.0" minWidth="250.0" prefWidth="85.0" />
@@ -433,13 +438,13 @@
                                 <Label text="Mot-clé" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
                                 <Label text="Date de départ" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                 <Button id="search" mnemonicParsing="false" styleClass="round-button" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
-                                    <graphic>
-                                        <ImageView fitHeight="85.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../../img/search-icon.png" />
-                                            </image>
-                                        </ImageView>
-                                    </graphic></Button>
+                           <graphic>
+                              <ImageView fitHeight="85.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/search-icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                                 <DatePicker GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                                 <Label text="Durée" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                                 <TextField fx:id="duration" promptText="durée du voyage ?" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
@@ -448,21 +453,21 @@
                             <StackPane.margin>
                                 <Insets bottom="60.0" left="60.0" right="60.0" />
                             </StackPane.margin>
-                            <opaqueInsets>
-                                <Insets />
-                            </opaqueInsets>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                         </GridPane>
                     </children>
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
                 </StackPane>
-                <Pane minHeight="-Infinity" prefHeight="980.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="600.0">
-                    <children>
+            <Pane minHeight="-Infinity" prefHeight="980.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="600.0">
+               <children>
                         <ListView fx:id="myListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="1905.0" styleClass="recycler" />
-                    </children>
-                </Pane>
+               </children>
+            </Pane>
             </children>
-        </AnchorPane>
+            </AnchorPane>
     </content>
 </ScrollPane>
