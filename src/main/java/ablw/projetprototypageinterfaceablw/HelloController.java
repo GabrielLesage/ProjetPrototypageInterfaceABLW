@@ -42,7 +42,7 @@ public class HelloController implements Initializable {
     public static ArrayList<Sejour> listSej = new ArrayList<>();
     public static ArrayList<Sejour> resultat;
 
-    public static Sejour actualTravel;
+
 
     static ObservableList<CustomPanel> observableList = FXCollections.observableArrayList();
 
@@ -162,8 +162,7 @@ public class HelloController implements Initializable {
         else {
             this.connected=null;
             connection.setText("Se connecter");
-            toMain(event);
-            afficheProfileBtn.setVisible(false);
+            //toMain(event);
         }
 
     }
@@ -188,15 +187,14 @@ public class HelloController implements Initializable {
         stage.close();
     }
 
-    public void toMain(ActionEvent event) throws Exception {
-        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.setMaximized(true);
-        stage.show();
-
-    }
+//    public void toMain(ActionEvent event) throws Exception {
+//        root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
+//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        scene = new Scene(root);
+//        stage.setScene(scene);
+//        stage.setMaximized(true);
+//        stage.show();
+//    }
 
 
     @Override

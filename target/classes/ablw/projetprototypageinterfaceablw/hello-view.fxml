@@ -401,7 +401,7 @@
                                 <Image url="@../../img/fond.jpg" />
                             </image>
                         </ImageView>
-                        <Label fx:id="welcomeText" alignment="TOP_LEFT" onMouseClicked="#toMain" styleClass="h1" text="adeona" textAlignment="CENTER" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+                        <Label fx:id="welcomeText" alignment="TOP_LEFT"  styleClass="h1" text="adeona" textAlignment="CENTER" textFill="WHITE" StackPane.alignment="TOP_LEFT">
                             <StackPane.margin>
                                 <Insets left="30.0" top="30.0" />
                             </StackPane.margin>
