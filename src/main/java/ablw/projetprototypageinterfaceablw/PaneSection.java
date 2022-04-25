@@ -34,6 +34,16 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
     public String titre;
     public int nbEllement;
     public ArrayList<Sejour> resultat;
+    protected Vector<Integer> listIndex;
+    protected int index;
+
+    public Vector<Integer> getListIndex() {
+        return listIndex;
+    }
+
+    public void setListIndex(Vector<Integer> listIndex) {
+        this.listIndex = listIndex;
+    }
 
     public String getTitre() {
         return titre;
@@ -61,10 +71,11 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
 
     public PaneSection(){}
 
-    public PaneSection(String titre, int nbEllement, ArrayList<Sejour> resultat) {
+    public PaneSection(String titre, int nbEllement, ArrayList<Sejour> resultat,Vector<Integer> listIndex) {
         this.titre = titre;
         this.nbEllement = nbEllement;
         this.resultat = resultat;
+        this.listIndex = listIndex;
     }
 
     //    public PaneSection(@NamedArg("titre") String titre, @NamedArg("nb_element") int nb_element)
@@ -84,6 +95,7 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
             this.titre=item.titre;
             this.nbEllement=item.nb_element;
             this.resultat=item.resultat;
+            this.listIndex=item.listIndex;
             System.out.println("nb "+nbEllement);
 
 
@@ -93,6 +105,7 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
             this.titre=null;
             this.nbEllement=0;
             this.resultat=null;
+            this.listIndex=null;
             setGraphic(null);
         }
     }
@@ -134,8 +147,8 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
         separateur.getChildren().addAll(titreSection,scrollPane);
         separateur.setMargin(scrollPane, new Insets(0,30,0,30));
 
-
         for (Sejour sejour: resultat) {
+
             StackPane stackPane = new StackPane();
             stackPane.setMinWidth(200);
             stackPane.setMinHeight(150);
@@ -162,7 +175,11 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
                     if(HelloController.connected == "traveler")
                     {
                         TravelControler.actualTravel = sejour;
+                        index=resultat.indexOf(sejour);
                         try {
+                            System.out.println(index);
+                            System.out.println(sejour.hote);
+                            System.out.println(listIndex.get(index));
                             Parent root = FXMLLoader.load(getClass().getResource("travel.fxml"));
                             HelloController.stage = (Stage)((Node)me.getSource()).getScene().getWindow();
                             HelloController.scene = new Scene(root);
@@ -174,6 +191,25 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
                         }
 
                     }
+                    else if(HelloController.connected == "host")
+                    {
+                        index=resultat.indexOf(sejour);
+                        TravelHostControler.actualTravel = sejour;
+                        System.out.println(index);
+                        System.out.println(sejour.hote);
+                        System.out.println(listIndex.get(index));
+                        TravelHostControler.index = listIndex.get(index);
+                        try {
+                            Parent root = FXMLLoader.load(getClass().getResource("travelHost.fxml"));
+                            HelloController.stage = (Stage)((Node)me.getSource()).getScene().getWindow();
+                            HelloController.scene = new Scene(root);
+                            HelloController.stage.setScene(HelloController.scene);
+                            HelloController.stage.setMaximized(true);
+                            HelloController.stage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             });
 
@@ -182,7 +218,7 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
 
             //button.setGraphic(imageView);
             section.getChildren().add(stackPane);
-
+            index++;
         }
 
         return separateur;

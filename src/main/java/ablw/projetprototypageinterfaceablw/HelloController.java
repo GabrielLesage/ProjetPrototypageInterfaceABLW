@@ -56,24 +56,31 @@ public class HelloController implements Initializable {
         //appel de la fonction de recherche dans un autre thread s'il y a plus de 2 lettres dans la recherche.
         if(mc.getText().length()<2) {
             resultat = new ArrayList<>(listSej);//Renvoie l'ensemble des séjours en cas de recherche vide.
-            observableList.clear();
-            observableList.addAll(setupRes(resultat));
-            myListView.setItems(observableList);
+            setObservableList();
             return;
         }
         RechercheVoyage search = new RechercheVoyage(listSej, mc.getText());
         Task<ArrayList<Sejour>> task = search.createTask();
         new Thread(task).run();
         resultat = task.getValue();//Renvoie la liste des séjours.
-        observableList.clear();
-        observableList.addAll(setupRes(resultat));
-        myListView.setItems(observableList);
+        setObservableList();
     }
+
+
     //class to contain objet of data for a ligne
     protected static class CustomPanel {
         protected String titre;
         protected int nb_element;
         protected ArrayList<Sejour> resultat;
+        protected Vector<Integer> listIndex;
+
+        public Vector<Integer> getListIndex() {
+            return listIndex;
+        }
+
+        public void setListIndex(Vector<Integer> listIndex) {
+            this.listIndex = listIndex;
+        }
 
         public ArrayList<Sejour> getResultat() {
             return resultat;
@@ -99,24 +106,18 @@ public class HelloController implements Initializable {
             this.nb_element = nb_element;
         }
 
-        public CustomPanel(String titre, int nb_element, ArrayList<Sejour> resultat) {
+        public CustomPanel(String titre, int nb_element, ArrayList<Sejour> resultat,Vector<Integer> listIndex) {
             super();
             this.titre = titre;
             this.nb_element = nb_element;
             this.resultat = resultat;
+            this.listIndex= listIndex;
         }
     }
 
     @FXML
     private Label welcomeText;
 
-    @FXML
-    private Button search;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
     @FXML
     ListView<CustomPanel> myListView;
@@ -126,12 +127,16 @@ public class HelloController implements Initializable {
     TextField duration;
 
     @FXML
+    Button MesVoyages;
+
+    @FXML
     Button connection;
     static protected Stage stage;
     static protected Scene scene;
     static protected Parent root;
 
     static protected String connected=null;
+    static protected String username=null;
 
     public void afficherProfile(ActionEvent e) throws IOException,Exception{
         Profile profile = new Profile();
@@ -139,6 +144,15 @@ public class HelloController implements Initializable {
         Stage stageModifier = new Stage();
         stageProfile = profile.creerStageProfile();
         stageProfile.show();
+    }
+
+    public void mesVoyages(ActionEvent e) throws IOException,Exception{
+        RechercheVoyage search = new RechercheVoyage(listSej, "Gabriel");
+        Task<ArrayList<Sejour>> task = search.createTask();
+        new Thread(task).run();
+        resultat = task.getValue();//Renvoie la liste des séjours.
+        setObservableList();
+
     }
 
     public void connection(ActionEvent event) throws IOException, Exception {
@@ -158,10 +172,15 @@ public class HelloController implements Initializable {
             connection.setText("Se déconnecter");
             modal.show();
             afficheProfileBtn.setVisible(true);
+            MesVoyages.setVisible(true);
+
         }
         else {
             this.connected=null;
             connection.setText("Se connecter");
+            afficheProfileBtn.setVisible(false);
+            MesVoyages.setVisible(false);
+            setObservableList();
             //toMain(event);
         }
 
@@ -171,12 +190,15 @@ public class HelloController implements Initializable {
 
     public void connectionTraveler(){
         this.connected="traveler";
+//        afficheProfileBtn.setVisible(false);
+//        MesVoyages.setVisible(false);
 
         close();
     }
 
     public void connectionHost(){
         this.connected="host";
+        this.username = "Gabriel";
         close();
     }
 
@@ -199,6 +221,7 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
+
         if(connected != null && this.connection != null)
         {
             connection.setText("Se déconnecter");
@@ -206,23 +229,15 @@ public class HelloController implements Initializable {
         try {
             if(connected != null){
                 afficheProfileBtn.setVisible(true);
+                MesVoyages.setVisible(true);
             }
             else{
                 afficheProfileBtn.setVisible(false);
+                MesVoyages.setVisible(false);
             }
         }
         catch (Exception e){
         }
-
-//        connection.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override public void handle(ActionEvent e) {
-//                connectionTraveler();
-//            }
-//        });
-
-
-
-
 
         //Création de la liste de 10 000 voyages.
         for(int i = 0; i < 500; i++){
@@ -249,8 +264,10 @@ public class HelloController implements Initializable {
         }
 
         resultat = new ArrayList<>(listSej);
+
         if(this.myListView !=null)
         {
+            setObservableList();
             //this.myListView = new ListView<Sejour>();
             this.customPanel = new Vector<>();
             if(myListView != null)
@@ -262,6 +279,7 @@ public class HelloController implements Initializable {
                     return new PaneSection();
                 }
             });
+
 
             duration.textProperty().addListener(new ChangeListener<String>() {
                 @Override
@@ -288,9 +306,21 @@ public class HelloController implements Initializable {
     {
         Vector<CustomPanel> tmp =new Vector<CustomPanel>();
 
-        for (int i = 0; i < resultat.size()/10; i++) {
-            tmp.add(new CustomPanel("test "+String.valueOf(i), 10,new ArrayList<Sejour>(res.subList(i*10, (i+1)*10))));
+
+        for (int i = 0; i < res.size()/10; i++) {
+            Vector<Integer> index = new Vector<>();
+            for (int j = i*10; j < (i+1)*10; j++) {
+                index.add(j);
+            }
+            tmp.add(new CustomPanel("test "+String.valueOf(i), 10,new ArrayList<Sejour>(res.subList(i*10, (i+1)*10)),index));
+            //System.out.println(index.get(5));
         }
         return tmp;
+    }
+
+    public void setObservableList(){
+        observableList.clear();
+        observableList.addAll(setupRes(resultat));
+        myListView.setItems(observableList);
     }
 }
