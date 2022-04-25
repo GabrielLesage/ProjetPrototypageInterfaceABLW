@@ -161,18 +161,18 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
                 public void handle(MouseEvent me) {
                     if(HelloController.connected == "traveler")
                     {
-                        System.out.println("eee"+imageView.getId());
-                        Parent root = null;
+                        TravelControler.actualTravel = sejour;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("travel.fxml"));
+                            Parent root = FXMLLoader.load(getClass().getResource("travel.fxml"));
+                            HelloController.stage = (Stage)((Node)me.getSource()).getScene().getWindow();
+                            HelloController.scene = new Scene(root);
+                            HelloController.stage.setScene(HelloController.scene);
+                            HelloController.stage.setMaximized(true);
+                            HelloController.stage.show();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                        HelloController.stage = (Stage)((Node)me.getSource()).getScene().getWindow();
-                        HelloController.scene = new Scene(root);
-                        HelloController.stage.setScene(HelloController.scene);
-                        HelloController.stage.setMaximized(true);
-                        HelloController.stage.show();
+
                     }
                 }
             });
