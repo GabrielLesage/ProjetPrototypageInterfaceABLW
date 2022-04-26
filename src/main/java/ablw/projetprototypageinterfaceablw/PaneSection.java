@@ -172,26 +172,7 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
             imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent me) {
-                    if(HelloController.connected == "traveler")
-                    {
-                        TravelControler.actualTravel = sejour;
-                        index=resultat.indexOf(sejour);
-                        try {
-                            System.out.println(index);
-                            System.out.println(sejour.hote);
-                            System.out.println(listIndex.get(index));
-                            Parent root = FXMLLoader.load(getClass().getResource("travel.fxml"));
-                            HelloController.stage = (Stage)((Node)me.getSource()).getScene().getWindow();
-                            HelloController.scene = new Scene(root);
-                            HelloController.stage.setScene(HelloController.scene);
-                            HelloController.stage.setMaximized(true);
-                            HelloController.stage.show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                    else if(HelloController.connected == "host")
+                    if(HelloController.connected == "host" && sejour.hote == HelloController.username)
                     {
                         index=resultat.indexOf(sejour);
                         TravelHostControler.actualTravel = sejour;
@@ -209,6 +190,25 @@ public class PaneSection extends ListCell<HelloController.CustomPanel>  {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                    }
+                    else if(HelloController.connected == "traveler" || HelloController.connected == "host")
+                    {
+                        TravelControler.actualTravel = sejour;
+                        index=resultat.indexOf(sejour);
+                        try {
+                            System.out.println(index);
+                            System.out.println(sejour.hote);
+                            System.out.println(listIndex.get(index));
+                            Parent root = FXMLLoader.load(getClass().getResource("travel.fxml"));
+                            HelloController.stage = (Stage)((Node)me.getSource()).getScene().getWindow();
+                            HelloController.scene = new Scene(root);
+                            HelloController.stage.setScene(HelloController.scene);
+                            HelloController.stage.setMaximized(true);
+                            HelloController.stage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }
             });
